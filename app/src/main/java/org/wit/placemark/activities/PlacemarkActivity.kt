@@ -1,14 +1,16 @@
-package org.wit.placemark
+package org.wit.placemark.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import org.wit.placemark.databinding.ActivityPlacemarkBinding
+import org.wit.placemark.models.PlacemarkModel
 import timber.log.Timber
 import timber.log.Timber.Forest.i
 class PlacemarkActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlacemarkBinding
+    var placemark = PlacemarkModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlacemarkBinding.inflate(layoutInflater)
@@ -20,7 +22,7 @@ class PlacemarkActivity : AppCompatActivity() {
         binding.btnAdd.setOnClickListener() {
             val placemarkTitle = binding.placemarkTitle.text.toString()
             if (placemarkTitle.isNotEmpty()) {
-                i("add Button Pressed: $placemarkTitle")
+                i("add Button Pressed: $placemark.title")
             }
             else {
                 Snackbar
