@@ -21,21 +21,18 @@ class PlacemarkActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPlacemarkBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
 
         app = application as MainApp
         i("Placemark Activity started...")
+
         binding.btnAdd.setOnClickListener() {
             placemark.title = binding.placemarkTitle.text.toString()
             placemark.description = binding.description.text.toString()
             if (placemark.title.isNotEmpty()) {
-                app.placemarks.add(placemark.copy())
-                i("add Button Pressed: ${placemark}")
-                for (i in app.placemarks.indices) {
-                    i("Placemark[$i]:${this.app.placemarks[i]}")
-                }
+                app.placemarks.create(placemark.copy())
+
                 setResult(RESULT_OK)
                 finish()
             }
