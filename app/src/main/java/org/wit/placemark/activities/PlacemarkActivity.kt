@@ -74,7 +74,11 @@ class PlacemarkActivity : AppCompatActivity() {
             }
 
         registerImagePickerCallback()
+
+        binding.placemarkLocation.setOnClickListener {
+            i ("Set Location Pressed")
         }
+    }
 
 
 
